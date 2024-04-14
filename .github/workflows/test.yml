@@ -4,7 +4,7 @@ on:
     branches:
       - main
     paths:
-      - ''common_repo.py
+      - 'common_repo.py'
 jobs:
   dispatch-target-updated:
     strategy:
