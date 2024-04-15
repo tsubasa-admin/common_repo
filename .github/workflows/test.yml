@@ -5,12 +5,12 @@ on:
       - main
     paths:
       - 'common_repo.py'
-      
+
 jobs:
   dispatch-target-updated:
     strategy:
       matrix:
-        repo: ['tsubasa-admin/test_repo']
+        repo: ['organization/test_repo']
     name: dispatch-target-updated
     runs-on: ubuntu-latest
     steps:
