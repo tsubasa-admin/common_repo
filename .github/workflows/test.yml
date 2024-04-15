@@ -10,7 +10,7 @@ jobs:
   dispatch-target-updated:
     strategy:
       matrix:
-        repo: ['tsubasa-admin/test_repo', 'tsubasa-admin/wr_repo']
+        repo: ['tsubasa-admin/test_repo', 'tsubasa-admin/test_wr_repo']
     name: dispatch-target-updated
     runs-on: ubuntu-latest
     steps:
