@@ -1,2 +1,2 @@
 print("common_repo")
-print("test/    S")
+print("test/   a S")
