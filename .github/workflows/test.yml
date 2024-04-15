@@ -4,8 +4,12 @@ on:
     branches:
       - main
     paths:
-      - 'common_repo.py'
+      - 'src/**'
 
+defaults:
+  run:
+    working-directory: src
+    
 jobs:
   dispatch-target-updated:
     strategy:
