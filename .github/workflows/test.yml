@@ -1,4 +1,5 @@
 name: dispatch target file updated
+
 on:
   push:
     branches:
@@ -6,21 +7,24 @@ on:
     paths:
       - 'src/**'
 
-defaults:
-  run:
-    working-directory: src
-    
 jobs:
   dispatch-target-updated:
-    strategy:
-      matrix:
-        repo: ['tsubasa-admin/test_repo', 'tsubasa-admin/test_wr_repo']
     name: dispatch-target-updated
     runs-on: ubuntu-latest
     steps:
-      - name: dispatch target-updated
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Dispatch target-updated
         uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.COMMON_REPO_ACCESS_TOKEN }}
-          repository: ${{ matrix.repo }}
+          repository: tsubasa-admin/test_repo
+          event-type: target-updated
+
+      - name: Dispatch target-updated for another repository
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.COMMON_REPO_ACCESS_TOKEN }}
+          repository: tsubasa-admin/test_wr_repo
           event-type: target-updated
