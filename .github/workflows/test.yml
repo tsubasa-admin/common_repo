@@ -1,7 +1,21 @@
-name: learn-github-actions
-on: [push]
+name: dispatch target file updated
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'common_repo.py'
 jobs:
-  check-bats-version:
+  dispatch-target-updated:
+    strategy:
+      matrix:
+        repo: ['tsubasa-admin/test_repo']
+    name: dispatch-target-updated
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello World"
+      - name: dispatch target-updated
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.GITHUB_ACCESS_TOKEN }}
+          repository: ${{ matrix.repo }}
+          event-type: target-updated
